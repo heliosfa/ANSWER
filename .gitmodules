@@ -1,0 +1,4 @@
+[submodule "Generics"]
+	path = Generics
+	url = https://github.com/heliosfa/Generics.git
+	branch = master
