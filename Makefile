@@ -49,7 +49,7 @@ LFLAGS	= -I$(GENERICS_DIR)
 all: generics synfire answer tree
 
 
-generics: $(GENERICSOBJS)
+generics: check-and-reinit-submodules $(GENERICSOBJS)
 
 
 synfire: $(SYNFIREOBJS) generics
@@ -89,3 +89,11 @@ $(OBJ_DIR)/%.o: %.cpp
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+# Automagically pull in the submodule
+.PHONY: check-and-reinit-submodules
+check-and-reinit-submodules:
+	@if git submodule status | egrep -q '^[-]|^[+]' ; then \
+			echo "INFO: Need to reinitialize git submodules"; \
+			git submodule update --init; \
+	fi
