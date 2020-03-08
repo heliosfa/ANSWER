@@ -68,7 +68,7 @@ Cct.Dump();
 printf("  Event pump: %p\n",pEv);
 if (pEv!=0) pEv->Dump();
 printf("  Static parameters:\n");
-printf("    Wallclock %u\n",t0);
+printf("    Wallclock %ld\n",t0);
 //printf("    Monitor list\n");
 //WALKVECTOR(string,vMon,i) printf("%s\n",(*i).c_str());
 printf("    Local history:\n");
@@ -169,7 +169,7 @@ er     = _er;
 
 void Ans_t::Hist_t::Dump()
 {
-printf("Wallclock time = %ul\n",wt);
+printf("Wallclock time = %ld\n",wt);
 printf("Simulated time = "); cout << time; printf("\n");
 printf("Queue size     = %u\n",qs);
 printf("Event rate     = %e\n",er);
