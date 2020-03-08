@@ -69,7 +69,7 @@ printf("[NK:%u]",u);
 int main(int argc, char* argv[])
 {
 printf("---------------------------\n");
-printf("Tree generator: Hello, %d-bit world\n",sizeof(void *)*8);
+printf("Tree generator: Hello, %zu-bit world\n",sizeof(void *)*8);
 if (argc<6) {
   printf("Requires: cct_filename mon_filename fanout depth type\n"
          "Hit any key to go\n");
@@ -137,7 +137,7 @@ for(unsigned tree=0;tree<2;tree++) {   // Build two trees:
     pRow1->clear();                    // Kill generator row
     swap(pRow1,pRow2);                 // Swap generator/generator child rows
     t0 = mTimer(t0);                   // Delta real time
-    printf(" ... %7u nodes built in %7ld msecs]\n",pRow1->size(),t0);
+    printf(" ... %7zu nodes built in %7ld msecs]\n",pRow1->size(),t0);
   }
   vRowEdge[tree] = *pRow1;             // Save the last level of the tree
 }
@@ -158,7 +158,7 @@ printf("[Stitching subtrees together...");
 t0 = mTimer();
 for(unsigned i=0;i<vRowEdge[0].size();i++)
   G.InsertArc(index++,vRowEdge[0][i].id,vRowEdge[1][i/Fx].id);
-printf(" ... %u edges in %ld msecs]\n",vRowEdge[0].size(),mTimer(t0));
+printf(" ... %zu edges in %ld msecs]\n",vRowEdge[0].size(),mTimer(t0));
 
 unsigned sink = index;                 // Save the sink node
 N = N_t(index++,0,0,0);                // Tack it onto the end
@@ -206,7 +206,7 @@ fprintf(fp,"== %e\n",stop);            // Simulation stop time
 fclose(fp);                            // End of circuit file
 
                                        // Now write the monitor list
-printf("Monitor list (%s) contains %u devices\n",mname.c_str(),vMon.size()+2);
+printf("Monitor list (%s) contains %zu devices\n",mname.c_str(),vMon.size()+2);
 fp = fopen(mname.c_str(),"w");
 fprintf(fp,"%s\n",src.c_str());
 //fprintf(fp,"%s\n",clk.c_str());
