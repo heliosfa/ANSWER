@@ -43,7 +43,7 @@ struct Ne_pt {                         // Body neuron parameters
     fprintf(fp,"!%s %u %e %e %e %e %e\n",name.c_str(),Mt,h,th,rf,dc,fd);
   }
   void UPrnt(FILE * fp) {              // For Loader103
-    fprintf(fp,"*neuron : %s(\"\",\"%32b%32b%32b%32b%32b%32b\")\n",name.c_str());
+    fprintf(fp,"*neuron : %s(\"\",\"%%32b%%32b%%32b%%32b%%32b%%32b\")\n",name.c_str());
     fprintf(fp,"#neuron : %s(%u,%e,%e,%e,%e,%e)\n",name.c_str(),Mt,h,th,rf,dc,fd);
   }
 } Ne_p;
@@ -66,7 +66,7 @@ struct So_pt {                         // Source parameters
     return string(buf);
   }
   void UPrnt(FILE * fp) {              // For Loader103
-    fprintf(fp,"*device : %s (\"\",\"%32b%32b%32b%32b%32b%32b\")\n",name.c_str());
+    fprintf(fp,"*device : %s (\"\",\"%%32b%%32b%%32b%%32b%%32b%%32b\")\n",name.c_str());
   }
 } So_p;
 
@@ -84,7 +84,7 @@ struct Si_pt {                         // Sink parameters
     return string(buf);
   }
   void UPrnt(FILE * fp) {              // For Loader103
-    fprintf(fp,"*device : %s (\"\",\"%32b%32b%32b%32b%32b%32b\")\n",name.c_str());
+    fprintf(fp,"*device : %s (\"\",\"%%32b%%32b%%32b%%32b%%32b%%32b\")\n",name.c_str());
   }
 } Si_p;
 
@@ -122,7 +122,7 @@ void WriteUIF(string,unsigned);
 
 int main(int argc, char* argv[])
 {
-printf("Hello, %d-bit world\n",sizeof(unsigned)*8);
+printf("Hello, %zu-bit world\n",sizeof(unsigned)*8);
 if (argc<6) {
   printf("Requires: "
          "root_filename ring_count ring_width pool_connect_prob neuron_type\n"
@@ -333,7 +333,7 @@ for(unsigned i=0;i<R;i++) D*=Rsize[i];
 double stop = So_p.ts + (double(D) + 2.0 * Ne_p.fd) * 1.05;
 fprintf(fp,"== %e\n",stop);            // Simulation stop time
 fclose(fp);                            // End of circuit file
-printf("Monitor list (%s) contains %u devices\n",mname.c_str(),vMon.size());
+printf("Monitor list (%s) contains %zu devices\n",mname.c_str(),vMon.size());
                                        // Now write the monitor list
 vMon.push_back(clk);
 vMon.push_back(sSource);
