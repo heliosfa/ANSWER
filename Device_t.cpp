@@ -17,7 +17,7 @@ Device_t::Device_t():fmon(false)
 
 //------------------------------------------------------------------------------
 
-Device_t::Device_t(string & s):fmon(false),name(s)
+Device_t::Device_t(string & s):name(s),fmon(false)
 {
 }
 
@@ -96,7 +96,7 @@ printf("    Refractory to go                %e\n",Tr);
 printf("    Last notified time              %e\n",Lnt);
 printf("  ... Temperature device              \n");
 printf("  First time flag                   %c\n",ftf?'T':'F');
-printf("  Ghost map size                    %u\n",gh.size());
+printf("  Ghost map size                    %zu\n",gh.size());
 WALKMAP(void *,unsigned,gh,i) printf("%p(%s):%u\n",
          (*i).first,(((Device_t *)((*i).first))->Name().c_str()),(*i).second);
 printf("----------------------------------------------------\n\n");
