@@ -9,6 +9,7 @@
 #include "flat.h"
 #include "pdigraph.hpp"
 #include "filename.h"
+#include "OSFixes.hpp"
 #include <string>
 using namespace std;
 

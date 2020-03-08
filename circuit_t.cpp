@@ -64,11 +64,11 @@ void Circuit_t::OutAns()
 // Walk the results store in each device a(as necessary) and dump it to a file
 // in a scratch directory
 {
-string cmd = "rmdir "+name+" /s /q";   // Kill the scratch directory quietly:
+string cmd = OS_RMDIR+name;   // Kill the scratch directory quietly:
 printf("--> %s\n",cmd.c_str());        // Tell the user
 int code = system(cmd.c_str());        // Actually do it
 printf("--> System call %s\n",code==0 ? "OK" : "failed");
-cmd = "mkdir " + name;                 // Make a new subdirectory
+cmd = OS_MKDIR + name;                 // Make a new subdirectory
 long t = Timer();
 while(Timer(t)<5);                     // (Wait while the disk heads move...)
 printf("--> %s\n",cmd.c_str());        // Tell the user

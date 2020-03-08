@@ -139,7 +139,9 @@ fprintf(gf,"unset key\n");
 fprintf(gf,"unset multiplot\n");
 fprintf(gf,"exit\n");
 fclose(gf);
-string sss = "call D:\\Apps\\GnuPlot\\gnuplot\\bin\\gnuplot.exe " +
+//string sss = "call D:\\Apps\\GnuPlot\\gnuplot\\bin\\gnuplot.exe " +
+//string sss = "call " + GNUPLOT_BIN + " " +
+std::string sss = std::string(OS_CALL) + std::string(GNUPLOT_BIN) +" " +
              cmnd.FNComplete();
 int code = system(sss.c_str());
 printf("\nCall to system GnuPlot %s \n",code==0 ? "OK" : "failed");
